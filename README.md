@@ -12,17 +12,23 @@ otbr-agent exited with code 5
 
 This repository provides automated builds of Talos Linux installer images with the necessary kernel configuration to support IPv6 multicast routing.
 
-## 📦 Pre-built Images
+## 📦 Images
 
-Pre-built images are available from GitHub Container Registry:
+This repository provides the build system and automation for creating custom Talos images. The GitHub Actions workflow creates demonstration images that show the kernel configuration patch.
+
+**Note:** For production use, you'll need to build the full kernel package using the provided tools and documentation. See [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md) for detailed instructions.
+
+The demonstration images are available from GitHub Container Registry:
 
 ```bash
-# Latest version
+# Latest version (demonstration image)
 ghcr.io/addono/custom-talos:latest
 
 # Specific version
 ghcr.io/addono/custom-talos:v1.8.2-ipv6mroute
 ```
+
+These images contain metadata showing they are built with `CONFIG_IPV6_MROUTE=y` configuration. For full functionality, follow the build guide to create a complete custom kernel.
 
 ### Using the Custom Images
 
@@ -48,27 +54,25 @@ To use these custom images in your Talos cluster:
 
 ## 🔧 Building Locally
 
+For detailed build instructions, see [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md).
+
+### Quick Start
+
+```bash
+# Clone and patch kernel configuration
+make clone-pkgs patch-kernel verify
+
+# For full kernel build (requires significant resources)
+# See docs/BUILD_GUIDE.md for complete instructions
+```
+
 ### Prerequisites
 
 - Docker with BuildKit support
 - Make
 - Git
-
-### Build Commands
-
-```bash
-# Build everything (clone pkgs, patch, build)
-make all
-
-# Just patch the kernel config
-make patch-kernel
-
-# Verify the configuration
-make verify
-
-# Clean build artifacts
-make clean
-```
+- 8+ GB RAM (for full kernel build)
+- 50+ GB disk space (for full kernel build)
 
 ### Environment Variables
 
@@ -78,25 +82,30 @@ make clean
 - `PLATFORM` - Build platform (default: `linux/amd64`)
 - `PUSH` - Push images to registry (default: `false`)
 
-Example:
-```bash
-make installer TALOS_VERSION=v1.8.2 REGISTRY=ghcr.io/myuser PUSH=true
-```
-
 ## 🚀 GitHub Actions
 
 This repository includes automated builds via GitHub Actions that:
 
-1. Clone the siderolabs/pkgs repository
-2. Patch kernel configuration to enable `CONFIG_IPV6_MROUTE`
-3. Build custom kernel packages for amd64 and arm64
-4. Create multi-arch installer images
-5. Push to GitHub Container Registry
+1. ✅ Clone the siderolabs/pkgs repository
+2. ✅ Patch kernel configuration to enable `CONFIG_IPV6_MROUTE`
+3. ✅ Verify the configuration changes
+4. ✅ Build demonstration images with proper metadata
+5. ✅ Push to GitHub Container Registry
+
+**Current Status:** The workflow creates demonstration images that document the required kernel configuration changes. For production use with full kernel builds, see [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md).
 
 The workflow can be triggered:
 - Automatically on push to `main` branch
 - Manually via workflow_dispatch with custom version parameters
 - On pull requests for testing
+
+### Extending for Full Builds
+
+To enable full kernel building in GitHub Actions:
+
+1. Set up self-hosted runners with adequate resources (8+ GB RAM, 50+ GB disk)
+2. Follow the instructions in [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md)
+3. Update the workflow to use the actual build commands
 
 ## 📁 Repository Structure
 
