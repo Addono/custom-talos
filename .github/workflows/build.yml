@@ -127,7 +127,7 @@ jobs:
           echo "Kernel build for ${{ matrix.arch }} with CONFIG_IPV6_MROUTE=y" > ../_artifacts/kernel-${{ matrix.arch }}.txt
       
       - name: Upload kernel artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.5.0
         with:
           name: kernel-${{ matrix.arch }}
           path: _out/_artifacts/
@@ -150,7 +150,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Download kernel artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4.1.3
         with:
           name: kernel-${{ matrix.arch }}
           path: _artifacts/
