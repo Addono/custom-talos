@@ -46,7 +46,7 @@ The process starts by cloning the `siderolabs/pkgs` repository and patching the 
 
 ```bash
 # Clone the repository
-git clone --depth 1 --branch release-1.8 https://github.com/siderolabs/pkgs.git
+git clone --depth 1 --branch release-1.12 https://github.com/siderolabs/pkgs.git
 
 # Run the patch script
 ./scripts/patch-kernel-config.sh pkgs/
@@ -72,7 +72,7 @@ This builds and pushes a container image with the custom kernel.
 cd pkgs/kernel
 docker buildx build \
   --platform linux/amd64 \
-  --tag ghcr.io/yourname/kernel:v1.8.2-custom \
+  --tag ghcr.io/yourname/kernel:v1.12.1-custom \
   --push \
   .
 ```
@@ -87,7 +87,7 @@ cd talos/
 
 # Build kernel and initramfs
 make kernel initramfs \
-  PKG_KERNEL=ghcr.io/yourname/kernel:v1.8.2-custom \
+  PKG_KERNEL=ghcr.io/yourname/kernel:v1.12.1-custom \
   PLATFORM=linux/amd64
 
 # This produces:
@@ -99,7 +99,7 @@ make kernel initramfs \
 
 ```bash
 make imager \
-  PKG_KERNEL=ghcr.io/yourname/kernel:v1.8.2-custom \
+  PKG_KERNEL=ghcr.io/yourname/kernel:v1.12.1-custom \
   PLATFORM=linux/amd64 \
   INSTALLER_ARCH=amd64
 ```
@@ -114,10 +114,10 @@ docker load -i _out/installer-amd64.tar
 
 # Tag it
 docker tag ghcr.io/siderolabs/installer:latest \
-  ghcr.io/yourname/talos-installer:v1.8.2-ipv6mroute
+  ghcr.io/yourname/talos-installer:v1.12.1-ipv6mroute
 
 # Push it
-docker push ghcr.io/yourname/talos-installer:v1.8.2-ipv6mroute
+docker push ghcr.io/yourname/talos-installer:v1.12.1-ipv6mroute
 ```
 
 ## Using the Custom Image
@@ -126,14 +126,14 @@ docker push ghcr.io/yourname/talos-installer:v1.8.2-ipv6mroute
 
 ```bash
 talosctl gen config my-cluster https://cluster-endpoint:6443 \
-  --install-image ghcr.io/yourname/talos-installer:v1.8.2-ipv6mroute
+  --install-image ghcr.io/yourname/talos-installer:v1.12.1-ipv6mroute
 ```
 
 ### For Upgrades
 
 ```bash
 talosctl upgrade \
-  --image ghcr.io/yourname/talos-installer:v1.8.2-ipv6mroute \
+  --image ghcr.io/yourname/talos-installer:v1.12.1-ipv6mroute \
   --nodes <node-ip>
 ```
 

@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-TALOS_VERSION="${1:-v1.8.2}"
+TALOS_VERSION="${1:-v1.12.1}"
 KERNEL_IMAGE="${2:-}"
 INSTALLER_IMAGE="${3:-}"
 PLATFORM="${4:-linux/amd64}"

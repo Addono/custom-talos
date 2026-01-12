@@ -8,7 +8,7 @@ This directory contains example configurations for using custom Talos images wit
 
 ```bash
 talosctl gen config my-cluster https://cluster.example.com:6443 \
-  --install-image ghcr.io/addono/custom-talos:v1.8.2-ipv6mroute \
+  --install-image ghcr.io/addono/custom-talos:v1.12.1-ipv6mroute \
   --output-dir ./talos-config/
 ```
 
@@ -53,7 +53,7 @@ If you have an existing Talos cluster and want to upgrade to use the custom kern
 # Upgrade nodes one at a time
 talosctl upgrade \
   --nodes 192.168.1.10 \
-  --image ghcr.io/addono/custom-talos:v1.8.2-ipv6mroute \
+  --image ghcr.io/addono/custom-talos:v1.12.1-ipv6mroute \
   --preserve
 ```
 

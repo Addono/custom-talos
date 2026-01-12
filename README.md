@@ -25,7 +25,7 @@ The demonstration images are available from GitHub Container Registry:
 ghcr.io/addono/custom-talos:latest
 
 # Specific version
-ghcr.io/addono/custom-talos:v1.8.2-ipv6mroute
+ghcr.io/addono/custom-talos:v1.12.1-ipv6mroute
 ```
 
 These images contain metadata showing they are built with `CONFIG_IPV6_MROUTE=y` configuration. For full functionality, follow the build guide to create a complete custom kernel.
@@ -37,12 +37,12 @@ To use these custom images in your Talos cluster:
 1. **For new cluster installations:**
    ```bash
    talosctl gen config my-cluster https://cluster-endpoint:6443 \
-     --install-image ghcr.io/addono/custom-talos:v1.8.2-ipv6mroute
+     --install-image ghcr.io/addono/custom-talos:v1.12.1-ipv6mroute
    ```
 
 2. **For existing clusters (upgrade):**
    ```bash
-   talosctl upgrade --image ghcr.io/addono/custom-talos:v1.8.2-ipv6mroute \
+   talosctl upgrade --image ghcr.io/addono/custom-talos:v1.12.1-ipv6mroute \
      --nodes <node-ip>
    ```
 
@@ -76,8 +76,8 @@ make clone-pkgs patch-kernel verify
 
 ### Environment Variables
 
-- `TALOS_VERSION` - Talos version to build (default: `v1.8.2`)
-- `PKGS_REF` - siderolabs/pkgs branch/tag (default: `release-1.8`)
+- `TALOS_VERSION` - Talos version to build (default: `v1.12.1`)
+- `PKGS_REF` - siderolabs/pkgs branch/tag (default: `release-1.12`)
 - `REGISTRY` - Container registry (default: `ghcr.io/addono`)
 - `PLATFORM` - Build platform (default: `linux/amd64`)
 - `PUSH` - Push images to registry (default: `false`)

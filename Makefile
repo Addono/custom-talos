@@ -1,8 +1,8 @@
 # Makefile for building custom Talos images with CONFIG_IPV6_MROUTE enabled
 
 # Configuration
-TALOS_VERSION ?= v1.8.2
-PKGS_REF ?= release-1.8
+TALOS_VERSION ?= v1.12.1
+PKGS_REF ?= release-1.12
 REGISTRY ?= ghcr.io/addono
 PLATFORM ?= linux/amd64
 PUSH ?= false

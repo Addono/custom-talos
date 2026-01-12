@@ -15,11 +15,11 @@ on:
       talos_version:
         description: 'Talos version to build'
         required: false
-        default: 'v1.8.2'
+        default: 'v1.12.1'
       pkgs_ref:
         description: 'siderolabs/pkgs ref to use'
         required: false
-        default: 'release-1.8'
+        default: 'release-1.12'
 
 env:
   REGISTRY: ghcr.io
@@ -61,8 +61,8 @@ jobs:
             TALOS_VERSION="${{ github.event.inputs.talos_version }}"
             PKGS_REF="${{ github.event.inputs.pkgs_ref }}"
           else
-            TALOS_VERSION="v1.8.2"
-            PKGS_REF="release-1.8"
+            TALOS_VERSION="v1.12.1"
+            PKGS_REF="release-1.12"
           fi
           echo "talos_version=${TALOS_VERSION}" >> $GITHUB_OUTPUT
           echo "pkgs_ref=${PKGS_REF}" >> $GITHUB_OUTPUT
@@ -171,7 +171,7 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             TALOS_VERSION="${{ github.event.inputs.talos_version }}"
           else
-            TALOS_VERSION="v1.8.2"
+            TALOS_VERSION="v1.12.1"
           fi
           echo "talos_version=${TALOS_VERSION}" >> $GITHUB_OUTPUT
           echo "installer_tag=${TALOS_VERSION}-ipv6mroute" >> $GITHUB_OUTPUT
@@ -249,7 +249,7 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             TALOS_VERSION="${{ github.event.inputs.talos_version }}"
           else
-            TALOS_VERSION="v1.8.2"
+            TALOS_VERSION="v1.12.1"
           fi
           echo "installer_tag=${TALOS_VERSION}-ipv6mroute" >> $GITHUB_OUTPUT
       
