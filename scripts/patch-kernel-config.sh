@@ -23,7 +23,7 @@ fi
 PATCHED=0
 
 for config_file in $CONFIG_FILES; do
-    echo "Processing $(basename $config_file)..."
+    echo "Processing $(basename "$config_file")..."
     
     # Check current state
     if grep -q "^CONFIG_IPV6_MROUTE=y" "$config_file"; then

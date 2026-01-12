@@ -23,7 +23,7 @@ ALL_GOOD=true
 
 for config_file in $CONFIG_FILES; do
     echo ""
-    echo "Checking $(basename $config_file):"
+    echo "Checking $(basename "$config_file"):"
     
     if grep -q "^CONFIG_IPV6_MROUTE=y" "$config_file"; then
         echo "  ✓ CONFIG_IPV6_MROUTE=y"
