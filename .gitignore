@@ -1,0 +1,58 @@
+# Build outputs
+_out/
+_artifacts/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Environment files
+.env
+.env.local
+
+# Cache directories
+.cache/
+*.cache
+
+# Node modules (if any)
+node_modules/
+
+# Python (if any)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Go (if any)
+vendor/
+*.test
+*.out
+
+# Build artifacts
+dist/
+build/
+*.tar
+*.tar.gz
+*.zip
+
+# Docker
+.docker/
+
+# CI/CD
+.github/actions-cache/
